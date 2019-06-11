@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+import argparse
+from wg_utils import cli
+
+def add(args):
+    return cli.add(args.interface, args.hostname, verbose=args.v)
+
+if __name__=="__main__":
+
+    # create the main parser
+    parser = argparse.ArgumentParser()
+
+    # create the subparser
+    subparsers = parser.add_subparsers(help='sub-command help')
+
+    # create the parser for the "a" command
+    parser_add = subparsers.add_parser('add', help='add help')
+    parser_add.add_argument('interface', type=str, help='interface help')
+    parser_add.add_argument('hostname', type=str, help='hostname help')
+    parser_add.add_argument('-v', action='store_true', help='verbose help')
+    parser_add.set_defaults(func=add)
+
+    # create the parser for the "b" command
+    parser_b = subparsers.add_parser('bar', help='bar help')
+    parser_b.add_argument('name', type=str, help='name (required) help')
+    parser_b.add_argument('--baz', type=int, help='baz (optional, int) help')
+
+    # parse and run
+    args = parser.parse_args()
+    args.func(args)

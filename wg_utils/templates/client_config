@@ -1,0 +1,11 @@
+[Interface]
+# {{ hostname }}
+Address = {{ ip }}
+PrivateKey = {{ privkey }}
+SaveConfig = false
+
+[Peer]
+PublicKey = {{ hostpubkey }}
+PersistentKeepAlive = 25
+AllowedIPs = {{ serverallowedips }}
+Endpoint = {{ serverendpoint }}

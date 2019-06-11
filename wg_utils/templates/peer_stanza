@@ -1,0 +1,4 @@
+[Peer]
+# {{ hostname }}.wg
+PublicKey = {{ pubkey }}
+AllowedIPs = {{ ip }}
